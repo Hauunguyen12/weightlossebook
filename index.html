@@ -225,19 +225,15 @@
 
           <form id="leadForm" novalidate class="space-y-3">
             <input
-              type="email" id="email" name="email" required
+              type="email" id="email-input" name="email" required
               placeholder="your@email.com"
               class="w-full px-4 py-4 text-base font-bold text-dark bg-white border-2 border-dark placeholder-gray-400 focus:outline-none focus:border-orange transition-colors rounded-none"
             >
             <button
-              type="submit" id="submitBtn"
+              type="submit" id="submit-btn"
               class="w-full px-7 py-4 font-extrabold text-white bg-orange border-2 border-dark shadow-b lift rounded-none cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wide text-sm"
             >
-              <svg id="spinner" class="hidden animate-spin h-5 w-5 text-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span id="btnText">Yes — Send Me the Free Bundle →</span>
+              Yes — Send Me the Free Bundle →
             </button>
             <p id="errMsg" class="hidden text-sm font-bold text-red-600 pt-1">⚠️ Please enter a valid email address.</p>
           </form>
@@ -595,60 +591,44 @@
 
   <!-- FORM JS — MailerLite Integration -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const CONFIG = {
-        redirectUrl:         "thankyou.html"
-      };
-
-      const form       = document.getElementById("leadForm");
-      const email      = document.getElementById("email");
-      const submitBtn  = document.getElementById("submitBtn");
-      const btnText    = document.getElementById("btnText");
-      const spinner    = document.getElementById("spinner");
-      const errMsg     = document.getElementById("errMsg");
-
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        errMsg.classList.add("hidden");
-        email.classList.remove("border-red-500");
-
-        const emailInput = email.value.trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
-          errMsg.textContent = "⚠️ Please enter a valid email address.";
-          errMsg.classList.remove("hidden");
-          email.classList.add("border-red-500");
-          email.focus();
-          return;
+    document.getElementById('submit-btn').addEventListener('click', async function(e) {
+        e.preventDefault(); // Chặn mọi hành vi chuyển hướng tự động của thẻ gốc
+        
+        const emailInput = document.getElementById('email-input').value;
+        const submitButton = this;
+        
+        // Kiểm tra nhanh nếu khách chưa gõ chữ hoặc gõ thiếu ký tự email `@`
+        if (!emailInput || !emailInput.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
         }
-
-        submitBtn.disabled = true;
-        submitBtn.classList.add("opacity-70", "cursor-not-allowed");
-        spinner.classList.remove("hidden");
-        btnText.textContent = "SENDING...";
+        
+        // Đổi trạng thái hiển thị nút bấm
+        submitButton.style.pointerEvents = 'none'; // Khóa không cho bấm liên tục
+        const originalText = submitButton.innerText;
+        submitButton.innerText = "SENDING...";
 
         try {
-          // Ép trình duyệt phải bắn dữ liệu về MailerLite và đợi phản hồi xong xuôi
-          await fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
-              method: 'POST',
-              body: new URLSearchParams({
-                  'fields[email]': emailInput
-              })
-          });
-          
-          // Chỉ khi MailerLite nhận data thành công mới cho phép chuyển hướng trang
-          window.location.href = CONFIG.redirectUrl;
-          
+            // Bắn trực tiếp dữ liệu sang endpoint MailerLite của bạn
+            await fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'fields[email]': emailInput
+                })
+            });
+            
+            // Dữ liệu đã sang MailerLite an toàn -> Chuyển hướng sang trang cảm ơn
+            window.location.href = 'thankyou.html';
+            
         } catch (error) {
-          console.error('Error:', error);
-          submitBtn.disabled = false;
-          submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
-          spinner.classList.add("hidden");
-          btnText.textContent = "TRY AGAIN";
-          errMsg.textContent = "⚠️ Connection error. Please try again.";
-          errMsg.classList.remove("hidden");
+            console.error('Network Error:', error);
+            // Nếu có lỗi mạng, cho phép khách bấm lại
+            submitButton.style.pointerEvents = 'auto';
+            submitButton.innerText = originalText;
         }
-      });
     });
   </script>
 
