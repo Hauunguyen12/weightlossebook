@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@500;700&amp;display=swap');
+      .bg { fill: #FFFFFF; }
+      .border { fill: none; stroke: #0284C7; stroke-width: 3; }
+      .title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 30px; fill: #0F172A; text-anchor: middle; }
+      .subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 24px; fill: #0F172A; text-anchor: middle; }
+      .desc { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; font-size: 11px; fill: #334155; text-anchor: middle; letter-spacing: 0.5px; }
+      .tagline { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 9px; fill: #0284C7; text-anchor: middle; letter-spacing: 2px; }
+      .brain-line { fill: none; stroke: #0284C7; stroke-width: 2; stroke-linecap: round; }
+      .brain-glow { fill: none; stroke: #E2BA55; stroke-width: 1.5; stroke-dasharray: 2, 4; }
+      .brain-dot { fill: #E2BA55; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="560" class="bg" />
+  
+  <!-- Outer Border -->
+  <rect x="15" y="15" width="370" height="530" class="border" />
+  <rect x="20" y="20" width="360" height="520" fill="none" stroke="#0F172A" stroke-width="1" opacity="0.2" />
+
+  <!-- Logo Icon at Top -->
+  <g transform="translate(200, 70) scale(0.8)">
+    <polygon points="0,-25 22,-12 22,12 0,25 -22,12 -22,-12" fill="none" stroke="#0F172A" stroke-width="2"/>
+    <path d="M-6,8 C-6,2 -1,0 0,-12 C1,0 6,2 6,8 Z" fill="none" stroke="#0F172A" stroke-width="2"/>
+    <path d="M-10,3 C-4,1 -2,-3 0,-12" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+    <path d="M10,3 C4,1 2,-3 0,-12" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="200" y="140" class="title">Menopause</text>
+  <text x="200" y="185" class="title">Brain Fog</text>
+  <text x="200" y="220" class="subtitle">&amp; Energy Reset</text>
+  
+  <line x1="120" y1="250" x2="280" y2="250" stroke="#0284C7" stroke-width="1.5" />
+  
+  <text x="200" y="285" class="desc">RECLAIM MENTAL CLARITY,</text>
+  <text x="200" y="305" class="desc">STEADY ALL-DAY ENERGY &amp; SHARP</text>
+  <text x="200" y="325" class="desc">FOCUS AFTER 40</text>
+
+  <!-- Vector Glowing Brain Icon -->
+  <g transform="translate(200, 420) scale(1.1)">
+    <!-- Outer energy ring -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#E2BA55" stroke-width="1" stroke-dasharray="3, 5" opacity="0.6" />
+    
+    <!-- Left Hemisphere -->
+    <path class="brain-line" d="M-2,-25 C-12,-25 -22,-20 -22,-10 C-22,-5 -18,0 -22,5 C-25,8 -25,18 -15,18 C-10,18 -8,12 -2,12 Z" />
+    <!-- Right Hemisphere -->
+    <path class="brain-line" d="M2,-25 C12,-25 22,-20 22,-10 C22,-5 18,0 22,5 C25,8 25,18 15,18 C10,18 8,12 2,12 Z" />
+    <!-- Center Line -->
+    <line x1="0" y1="-25" x2="0" y2="12" class="brain-line" stroke-width="1.5" opacity="0.7" />
+    
+    <!-- Inner brain paths / lobes -->
+    <path class="brain-line" stroke-width="1.5" d="M-10,-15 C-5,-10 -5,-5 -12,-2" />
+    <path class="brain-line" stroke-width="1.5" d="M10,-15 C5,-10 5,-5 12,-2" />
+    <path class="brain-line" stroke-width="1.5" d="M-15,5 C-10,5 -5,8 -5,12" />
+    <path class="brain-line" stroke-width="1.5" d="M15,5 C10,5 5,8 5,12" />
+    
+    <!-- Glowing nodes (dots) -->
+    <circle cx="-12" cy="-15" r="3" class="brain-dot" />
+    <circle cx="12" cy="-15" r="3" class="brain-dot" />
+    <circle cx="-22" cy="-5" r="2.5" class="brain-dot" />
+    <circle cx="22" cy="-5" r="2.5" class="brain-dot" />
+    <circle cx="0" cy="-25" r="3" class="brain-dot" />
+    <circle cx="-15" cy="18" r="3.5" class="brain-dot" />
+    <circle cx="15" cy="18" r="3.5" class="brain-dot" />
+    <circle cx="0" cy="5" r="2" class="brain-dot" />
+
+    <!-- Connecting network lines -->
+    <line x1="-12" y1="-15" x2="0" y2="-25" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+    <line x1="12" y1="-15" x2="0" y2="-25" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+    <line x1="-12" y1="-15" x2="-22" y2="-5" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+    <line x1="12" y1="-15" x2="22" y2="-5" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+    <line x1="-22" y1="-5" x2="-15" y2="18" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+    <line x1="22" y1="-5" x2="15" y2="18" stroke="#E2BA55" stroke-width="1" opacity="0.6" />
+  </g>
+
+  <!-- Footer Tagline -->
+  <line x1="50" y1="505" x2="350" y2="505" stroke="#0F172A" stroke-width="1" opacity="0.2" />
+  <text x="200" y="520" class="tagline">SCIENCE-BACKED. NATURALLY POWERFUL.</text>
+</svg>

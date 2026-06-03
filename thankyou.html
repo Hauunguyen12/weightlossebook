@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Your Inbox | HerVitality</title>
+  
+  <!-- =========================================================================
+       CRITICAL: CONVERSION TRACKING CODE PLACEHOLDERS (META PIXEL & GOOGLE ADS)
+       Paste your conversion tracking scripts here to fire a "Lead" or 
+       "Conversion" event on successful form submission.
+       
+       Example (Meta Pixel Lead Event):
+       <script>
+         fbq('track', 'Lead');
+       </script>
+       ========================================================================= -->
+  <!-- <script>... Your Conversion Tracking Script ...</script> -->
+  <!-- ========================================================================= -->
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind CSS Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandCream: '#FAF9F5',
+            brandDark: '#111111',
+            brandGreen: '#0B4A30',
+            brandOrange: '#E25C38',
+            brandGold: '#E2BA55',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAF9F5;
+      color: #111111;
+    }
+    .font-serif-brutalist {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brandOrange selection:text-white">
+
+  <!-- TOP ALERT BAR -->
+  <div class="w-full bg-brandDark text-[#FAF9F5] border-b-2 border-brandDark py-2.5 px-4 text-center text-xs md:text-sm font-bold uppercase tracking-wider">
+    📬 Check your email! The download link has been dispatched.
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="w-full bg-brandCream border-b-2 border-brandDark py-5 px-4 md:px-8 flex justify-between items-center max-w-4xl mx-auto">
+    <div class="flex items-center gap-2 mx-auto">
+      <span class="font-serif-brutalist text-xl md:text-2xl font-extrabold tracking-tight uppercase border-2 border-brandDark px-3 py-1 bg-brandGreen text-white shadow-[2px_2px_0px_rgba(17,17,17,1)]">
+        HerVitality
+      </span>
+    </div>
+  </header>
+
+  <!-- MAIN CONFIRMATION CARD -->
+  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-8 md:py-16">
+    
+    <div class="bg-brandCream border-4 border-brandDark p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] text-center relative overflow-hidden">
+      
+      <!-- Top Decorative Accent -->
+      <div class="absolute top-0 left-0 right-0 h-2.5 bg-brandGreen"></div>
+
+      <!-- Checked Mail Icon -->
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-brandGold border-2 border-brandDark rounded-none shadow-[3px_3px_0px_rgba(17,17,17,1)] mb-6 text-brandDark">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
+        </svg>
+      </div>
+
+      <!-- Success Headline -->
+      <h1 class="font-serif-brutalist text-3xl md:text-5xl font-extrabold tracking-tight text-brandDark mb-4 leading-tight">
+        Your 4-Ebook Bundle <br class="hidden md:block">is on the Way!
+      </h1>
+      
+      <p class="text-base md:text-lg text-gray-700 font-semibold max-w-xl mx-auto mb-8">
+        We have dispatched the digital guides to your inbox. Please follow the instructions below to ensure delivery.
+      </p>
+
+      <!-- Mini visual confirmation display -->
+      <div class="flex justify-center items-center gap-2 mb-10 max-w-md mx-auto opacity-90">
+        <img src="assets/gut-health.jpg" class="w-14 h-auto border border-brandDark rotate-[-6deg] -translate-x-2 shadow-[2px_2px_0px_rgba(17,17,17,1)]" alt="Gut Health">
+        <img src="assets/meal-plan.jpg" class="w-14 h-auto border border-brandDark shadow-[2px_2px_0px_rgba(17,17,17,1)]" alt="Meal Plan">
+        <img src="assets/brain-fog.jpg" class="w-14 h-auto border border-brandDark rotate-[6deg] translate-x-2 shadow-[2px_2px_0px_rgba(17,17,17,1)]" alt="Brain Fog">
+        <img src="assets/metabolic-reset.jpg" class="w-14 h-auto border border-brandDark rotate-[12deg] translate-x-4 shadow-[2px_2px_0px_rgba(17,17,17,1)]" alt="Metabolic Reset">
+      </div>
+
+      <!-- 3-STEP DELIVERY CHECKLIST -->
+      <div class="max-w-xl mx-auto text-left border-t-2 border-brandDark pt-8 mb-10">
+        <h3 class="text-xs font-extrabold uppercase tracking-widest text-brandGreen mb-4">
+          ⚠️ Crucial steps to download your files:
+        </h3>
+        
+        <div class="space-y-6">
+          <!-- Step 1 -->
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-none border-2 border-brandDark bg-brandGreen text-white flex items-center justify-center font-bold text-sm shadow-[2px_2px_0px_rgba(17,17,17,1)]">
+              1
+            </span>
+            <div>
+              <h4 class="font-bold text-sm md:text-base text-brandDark">Check Your Inbox</h4>
+              <p class="text-xs md:text-sm font-medium text-gray-600 mt-1">
+                Open your mail client and search for an email from <strong class="text-brandDark">Dr. Sarah Jenkins</strong> or <strong class="text-brandDark">HerVitality</strong> with the subject line: <code class="bg-gray-200 text-brandDark px-1 font-bold text-[11px] md:text-xs border border-gray-400 font-mono">[Download] Your 4-Guide Menopause Reset Bundle</code>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-none border-2 border-brandDark bg-brandOrange text-white flex items-center justify-center font-bold text-sm shadow-[2px_2px_0px_rgba(17,17,17,1)]">
+              2
+            </span>
+            <div>
+              <h4 class="font-bold text-sm md:text-base text-brandDark">Check Spam / Promotions Folders</h4>
+              <p class="text-xs md:text-sm font-medium text-gray-600 mt-1">
+                Corporate spam filters can sometimes block automated downloads. If the email doesn't arrive within 3 minutes, search your **Spam**, **Junk**, or Gmail **Promotions** folder. Drag the email to your **Primary** inbox to Whitelist our tips.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-none border-2 border-brandDark bg-brandGold text-brandDark flex items-center justify-center font-bold text-sm shadow-[2px_2px_0px_rgba(17,17,17,1)]">
+              3
+            </span>
+            <div>
+              <h4 class="font-bold text-sm md:text-base text-brandDark">Whitelist the Email Address</h4>
+              <p class="text-xs md:text-sm font-medium text-gray-600 mt-1">
+                Add <code class="bg-gray-200 text-brandDark px-1 font-bold text-[11px] md:text-xs border border-gray-400 font-mono">support@hervitality.com</code> to your contact list. This guarantees you will receive the upcoming health workbook sheets and video guides.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EXIT CALL TO ACTION BUTTON -->
+      <div class="pt-4">
+        <a 
+          href="index.html" 
+          class="inline-block px-8 py-4 font-extrabold text-white bg-brandDark border-2 border-brandDark shadow-[4px_4px_0px_rgba(17,17,17,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_rgba(17,17,17,0.4)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_rgba(17,17,17,0.2)] transition-all duration-150 rounded-none cursor-pointer uppercase tracking-wider text-sm"
+        >
+          ← Return to Landing Page
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       FTC & META COMPLIANCE FOOTER
+       Identical to index.html to maintain legal compliance throughout the funnel.
+       ========================================================================= -->
+  <footer class="w-full bg-brandDark text-gray-400 py-12 px-4 md:px-8 border-t-4 border-brandDark">
+    <div class="max-w-4xl mx-auto space-y-8">
+      
+      <!-- Logo and Links -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-gray-800">
+        <div class="font-serif-brutalist text-xl font-extrabold tracking-tight uppercase text-white border border-gray-800 px-3 py-1 bg-brandGreen shadow-[2px_2px_0px_rgba(255,255,255,0.15)]">
+          HerVitality
+        </div>
+        <div class="flex flex-wrap gap-6 text-xs md:text-sm font-bold uppercase tracking-wider justify-center">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Contact Support</a>
+        </div>
+      </div>
+
+      <!-- Legal Disclaimers -->
+      <div class="space-y-4 text-[10px] md:text-xs leading-relaxed text-gray-500 font-medium">
+        <p>
+          <strong class="text-gray-400 uppercase tracking-wider block mb-1">Health &amp; Medical Disclaimer:</strong>
+          The content provided on this website, including all written materials, images, and downloadable guides, is for informational and educational purposes only and is not intended as medical advice. The information is not intended to diagnose, treat, cure, or prevent any health condition or disease. Always consult with a qualified healthcare professional or your physician before starting any diet, supplement, exercise, or health program.
+        </p>
+        
+        <p>
+          <strong class="text-gray-400 uppercase tracking-wider block mb-1">Meta Ads Platform Disclaimer:</strong>
+          This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+        </p>
+        
+        <p class="pt-4 text-center">
+          &copy; 2026 HerVitality. All rights reserved.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

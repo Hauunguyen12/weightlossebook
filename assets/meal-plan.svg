@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@500;700&amp;display=swap');
+      .bg { fill: #FAF9F5; }
+      .border { fill: none; stroke: #C2410C; stroke-width: 3; }
+      .title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px; fill: #7C2D12; text-anchor: middle; }
+      .big-num { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 64px; fill: #C2410C; text-anchor: middle; }
+      .subtitle { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; fill: #7C2D12; text-anchor: middle; }
+      .desc { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; font-size: 11px; fill: #431407; text-anchor: middle; letter-spacing: 0.5px; }
+      .tagline { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 9px; fill: #C2410C; text-anchor: middle; letter-spacing: 2px; }
+      .orange-rim { fill: #FDBA74; stroke: #C2410C; stroke-width: 2; }
+      .orange-flesh { fill: #DC2626; }
+      .orange-segment { fill: #991B1B; stroke: #FDBA74; stroke-width: 1.5; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="560" class="bg" />
+  
+  <!-- Outer Border -->
+  <rect x="15" y="15" width="370" height="530" class="border" />
+  <rect x="20" y="20" width="360" height="520" fill="none" stroke="#7C2D12" stroke-width="1" opacity="0.3" />
+
+  <!-- Logo Icon at Top -->
+  <g transform="translate(200, 70) scale(0.8)">
+    <polygon points="0,-25 22,-12 22,12 0,25 -22,12 -22,-12" fill="none" stroke="#7C2D12" stroke-width="2"/>
+    <path d="M-6,8 C-6,2 -1,0 0,-12 C1,0 6,2 6,8 Z" fill="none" stroke="#7C2D12" stroke-width="2"/>
+    <path d="M-10,3 C-4,1 -2,-3 0,-12" fill="none" stroke="#7C2D12" stroke-width="1.5"/>
+    <path d="M10,3 C4,1 2,-3 0,-12" fill="none" stroke="#7C2D12" stroke-width="1.5"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="200" y="130" class="title">Perimenopause</text>
+  <text x="200" y="165" class="title">Hormone-Friendly</text>
+  <text x="200" y="230" class="big-num">14-Day</text>
+  <text x="200" y="275" class="subtitle">Meal Plan</text>
+  
+  <line x1="120" y1="300" x2="280" y2="300" stroke="#C2410C" stroke-width="1.5" />
+  
+  <text x="200" y="330" class="desc">DELICIOUS DAILY MEALS TO BALANCE</text>
+  <text x="200" y="350" class="desc">HORMONES, CRUSH SUGAR CRAVINGS</text>
+  <text x="200" y="370" class="desc">&amp; MELT STUBBORN BELLY FAT</text>
+
+  <!-- Vector Blood Orange Slice -->
+  <g transform="translate(200, 440) scale(1.1)">
+    <!-- Orange boundary -->
+    <circle cx="0" cy="0" r="35" class="orange-rim" />
+    <circle cx="0" cy="0" r="31" class="orange-flesh" />
+    <!-- Center core -->
+    <circle cx="0" cy="0" r="4" fill="#FAF9F5" />
+    <!-- Segments -->
+    <path d="M0,0 L0,-30 A30,30 0 0,1 18,-24 Z" class="orange-segment" />
+    <path d="M0,0 L18,-24 A30,30 0 0,1 28,-10 Z" class="orange-segment" />
+    <path d="M0,0 L28,-10 A30,30 0 0,1 28,10 Z" class="orange-segment" />
+    <path d="M0,0 L28,10 A30,30 0 0,1 18,24 Z" class="orange-segment" />
+    <path d="M0,0 L18,24 A30,30 0 0,1 0,30 Z" class="orange-segment" />
+    <path d="M0,0 L0,30 A30,30 0 0,1 -18,24 Z" class="orange-segment" />
+    <path d="M0,0 L-18,24 A30,30 0 0,1 -28,10 Z" class="orange-segment" />
+    <path d="M0,0 L-28,10 A30,30 0 0,1 -28,-10 Z" class="orange-segment" />
+    <path d="M0,0 L-28,-10 A30,30 0 0,1 -18,-24 Z" class="orange-segment" />
+    <path d="M0,0 L-18,-24 A30,30 0 0,1 0,-30 Z" class="orange-segment" />
+    
+    <!-- Leaves/Decorations on the side -->
+    <path d="M40,10 C50,5 55,-5 52,-15 C42,-12 37,-2 35,5 Z" fill="#0D5C3A" stroke="#FAF9F5" stroke-width="1" />
+    <path d="M-40,15 C-50,20 -55,10 -52,0 C-42,3 -37,13 -35,20 Z" fill="#0D5C3A" stroke="#FAF9F5" stroke-width="1" />
+  </g>
+
+  <!-- Footer Tagline -->
+  <line x1="50" y1="505" x2="350" y2="505" stroke="#7C2D12" stroke-width="1" opacity="0.3" />
+  <text x="200" y="520" class="tagline">HEALTHY MEALS. DELICIOUS LIFE.</text>
+</svg>
