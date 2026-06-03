@@ -223,9 +223,9 @@
           </h3>
           <p class="text-xs text-gray-500 mb-5 font-medium">No spam. Unsubscribe anytime. Delivered in under 2 minutes.</p>
 
-          <form id="leadForm" novalidate class="space-y-3">
+          <form id="leadForm" method="POST" action="https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe" target="hidden_iframe" class="space-y-3">
             <input
-              type="email" id="email-input" name="email" required
+              type="email" id="email-input" name="fields[email]" required
               placeholder="your@email.com"
               class="w-full px-4 py-4 text-base font-bold text-dark bg-white border-2 border-dark placeholder-gray-400 focus:outline-none focus:border-orange transition-colors rounded-none"
             >
@@ -237,6 +237,7 @@
             </button>
             <p id="errMsg" class="hidden text-sm font-bold text-red-600 pt-1">⚠️ Please enter a valid email address.</p>
           </form>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
           <p class="text-xs text-gray-500 mt-4 font-medium flex items-start gap-2">
             <svg class="w-4 h-4 text-green flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -591,45 +592,34 @@
 
   <!-- FORM JS — MailerLite Integration -->
   <script>
-    document.getElementById('submit-btn').addEventListener('click', async function(e) {
-        e.preventDefault(); // Chặn mọi hành vi chuyển hướng tự động của thẻ gốc
+    const form = document.getElementById('leadForm');
+    const submitBtn = document.getElementById('submit-btn');
+    const emailInput = document.getElementById('email-input');
+    const iframe = document.getElementById('hidden_iframe');
+
+    form.addEventListener('submit', function(e) {
+        const emailVal = emailInput.value.trim();
         
-        const emailInput = document.getElementById('email-input').value;
-        const submitButton = this;
-        
-        // Kiểm tra nhanh nếu khách chưa gõ chữ hoặc gõ thiếu ký tự email `@`
-        if (!emailInput || !emailInput.includes('@')) {
+        // Kiểm tra nhanh định dạng email trước khi submit
+        if (!emailVal || !emailVal.includes('@')) {
+            e.preventDefault(); // Chặn gửi nếu không hợp lệ
             alert('Please enter a valid email address.');
             return;
         }
         
         // Đổi trạng thái hiển thị nút bấm
-        submitButton.style.pointerEvents = 'none'; // Khóa không cho bấm liên tục
-        const originalText = submitButton.innerText;
-        submitButton.innerText = "SENDING...";
-
-        try {
-            // Bắn trực tiếp dữ liệu sang endpoint MailerLite của bạn
-            await fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
-                method: 'POST',
-                mode: 'no-cors', // QUAN TRỌNG: bypass CORS cho endpoint JSONP công cộng này
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    'fields[email]': emailInput
-                })
-            });
-            
-            // Dữ liệu đã sang MailerLite an toàn -> Chuyển hướng sang trang cảm ơn
+        submitBtn.style.pointerEvents = 'none'; // Khóa không cho bấm liên tục
+        submitBtn.innerText = "SENDING...";
+        
+        // Thiết lập cơ chế dự phòng: Tự động chuyển hướng sau 3.5 giây đề phòng sự cố mạng hoặc trình duyệt chặn sự kiện load của iframe
+        setTimeout(function() {
             window.location.href = 'thankyou.html';
-            
-        } catch (error) {
-            console.error('Network Error:', error);
-            // Nếu có lỗi mạng, cho phép khách bấm lại
-            submitButton.style.pointerEvents = 'auto';
-            submitButton.innerText = originalText;
-        }
+        }, 3500);
+    });
+
+    // Khi iframe ẩn tải xong phản hồi của MailerLite (xác nhận dữ liệu đã được gửi đi thành công)
+    iframe.addEventListener('load', function() {
+        window.location.href = 'thankyou.html';
     });
   </script>
 
