@@ -612,6 +612,7 @@
             // Bắn trực tiếp dữ liệu sang endpoint MailerLite của bạn
             await fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
                 method: 'POST',
+                mode: 'no-cors', // QUAN TRỌNG: bypass CORS cho endpoint JSONP công cộng này
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
