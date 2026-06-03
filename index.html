@@ -598,7 +598,6 @@
     document.addEventListener("DOMContentLoaded", function () {
 
       const CONFIG = {
-        alwaysRedirectOnFail: true,
         redirectUrl:         "thankyou.html"
       };
 
@@ -609,7 +608,7 @@
       const spinner    = document.getElementById("spinner");
       const errMsg     = document.getElementById("errMsg");
 
-      form.addEventListener("submit", function (e) {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
         errMsg.classList.add("hidden");
         email.classList.remove("border-red-500");
@@ -628,29 +627,27 @@
         spinner.classList.remove("hidden");
         btnText.textContent = "SENDING...";
 
-        // MailerLite subscription integration
-        fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
-            method: 'POST',
-            body: new URLSearchParams({
-                'fields[email]': emailInput
-            })
-        })
-        .then(() => {
-            window.location.href = CONFIG.redirectUrl;
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            if (CONFIG.alwaysRedirectOnFail) {
-              window.location.href = CONFIG.redirectUrl;
-            } else {
-              submitBtn.disabled = false;
-              submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
-              spinner.classList.add("hidden");
-              btnText.textContent = "TRY AGAIN";
-              errMsg.textContent = "⚠️ Something went wrong. Please try again.";
-              errMsg.classList.remove("hidden");
-            }
-        });
+        try {
+          // Ép trình duyệt phải bắn dữ liệu về MailerLite và đợi phản hồi xong xuôi
+          await fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
+              method: 'POST',
+              body: new URLSearchParams({
+                  'fields[email]': emailInput
+              })
+          });
+          
+          // Chỉ khi MailerLite nhận data thành công mới cho phép chuyển hướng trang
+          window.location.href = CONFIG.redirectUrl;
+          
+        } catch (error) {
+          console.error('Error:', error);
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          spinner.classList.add("hidden");
+          btnText.textContent = "TRY AGAIN";
+          errMsg.textContent = "⚠️ Connection error. Please try again.";
+          errMsg.classList.remove("hidden");
+        }
       });
     });
   </script>
