@@ -593,17 +593,14 @@
   </footer>
 
 
-  <!-- FORM JS — plug in your webhook URL below -->
+  <!-- FORM JS — MailerLite Integration -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-      // ─── CONFIG ─────────────────────────────────────────────────────
       const CONFIG = {
-        webhookUrl:          "https://your-webhook-endpoint.pipedream.net",
         alwaysRedirectOnFail: true,
         redirectUrl:         "thankyou.html"
       };
-      // ────────────────────────────────────────────────────────────────
 
       const form       = document.getElementById("leadForm");
       const email      = document.getElementById("email");
@@ -612,13 +609,14 @@
       const spinner    = document.getElementById("spinner");
       const errMsg     = document.getElementById("errMsg");
 
-      form.addEventListener("submit", async function (e) {
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
         errMsg.classList.add("hidden");
         email.classList.remove("border-red-500");
 
-        const val = email.value.trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        const emailInput = email.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
+          errMsg.textContent = "⚠️ Please enter a valid email address.";
           errMsg.classList.remove("hidden");
           email.classList.add("border-red-500");
           email.focus();
@@ -628,37 +626,31 @@
         submitBtn.disabled = true;
         submitBtn.classList.add("opacity-70", "cursor-not-allowed");
         spinner.classList.remove("hidden");
-        btnText.textContent = "Sending your guides…";
+        btnText.textContent = "SENDING...";
 
-        const payload = {
-          email:   val,
-          time:    new Date().toISOString(),
-          source:  "TikTok Bio Link",
-          funnel:  "menomate_2book_bundle"
-        };
-
-        try {
-          const ctrl = new AbortController();
-          setTimeout(() => ctrl.abort(), 5000);
-          await fetch(CONFIG.webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            signal: ctrl.signal
-          });
-          window.location.href = CONFIG.redirectUrl;
-        } catch (err) {
-          if (CONFIG.alwaysRedirectOnFail) {
+        // MailerLite subscription integration
+        fetch('https://assets.mailerlite.com/jsonp/240291/forms/VCXV2U/subscribe', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'fields[email]': emailInput
+            })
+        })
+        .then(() => {
             window.location.href = CONFIG.redirectUrl;
-          } else {
-            submitBtn.disabled = false;
-            submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
-            spinner.classList.add("hidden");
-            btnText.textContent = "Yes — Send Me the Free Bundle →";
-            errMsg.textContent = "⚠️ Something went wrong. Please try again.";
-            errMsg.classList.remove("hidden");
-          }
-        }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            if (CONFIG.alwaysRedirectOnFail) {
+              window.location.href = CONFIG.redirectUrl;
+            } else {
+              submitBtn.disabled = false;
+              submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+              spinner.classList.add("hidden");
+              btnText.textContent = "TRY AGAIN";
+              errMsg.textContent = "⚠️ Something went wrong. Please try again.";
+              errMsg.classList.remove("hidden");
+            }
+        });
       });
     });
   </script>
